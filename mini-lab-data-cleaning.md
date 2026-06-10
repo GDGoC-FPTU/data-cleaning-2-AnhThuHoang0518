@@ -67,3 +67,8 @@ Your script should output a `sanitized_sample.json` that is:
 ### Discussion Question
 "Why did we use **ETL** (Cleaning before storage) for the PII masking instead of **ELT** (Cleaning after storage)?"
 *(Hint: Think about where the raw PII would be sitting if we used ELT).*
+Nên dùng ETL vì PII nên được làm sạch hoặc che đi trước khi được lưu trữ.
+
+Nếu dùng ELT, dữ liệu PII gốc sẽ được đưa vào storage trước. Điều đó có nghĩa là tên và email đầy đủ có thể tạm thời nằm trong database, log hoặc backup trước khi được che đi. Việc này tạo ra rủi ro về quyền riêng tư và bảo mật.
+
+Với ETL, các trường dữ liệu nhạy cảm được xóa hoặc che trước khi load vào hệ thống lưu trữ. Vì vậy, storage chỉ chứa dữ liệu đã được làm sạch.
